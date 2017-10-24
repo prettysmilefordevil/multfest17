@@ -9,7 +9,7 @@ import telebot
 import os
 
 
-#server = Flask(__name__)
+server = Flask(__name__)
 
 bot = telebot.TeleBot(token)
 #keyboard = Keyboard(bot)
