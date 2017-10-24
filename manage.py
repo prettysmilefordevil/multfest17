@@ -31,7 +31,7 @@ def handle_text(message):
 def handle_text(message):
 	cartoons = Timetable(database_url).get_cartoons(datetime.date(2017, 10, 26))
 	cartoons = [cartoons[key] for key in sorted(cartoons.keys())]
-	bot.send_message(message.chat.id, display_schedule(cartoons), 'HTML')
+	bot.send_message(message.chat.id, display_schedule(cartoons))
 
 
 @server.route('/' + token, methods=['POST'])
