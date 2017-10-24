@@ -24,12 +24,12 @@ def handle_text(message):
 
 @bot.message_handler(func=lambda mess: "Обратная связь" == mess.text, content_types=['text'])
 def handle_text(message):
-	bot.send_message(message.chat.id, 'По вопросам и предложениям:\n \n')
+	bot.send_message(message.chat.id, 'По вопросам и предложениям: multfest.ru\n multfest@gmail.com\n')
 
 
 @bot.message_handler(func=lambda mess: 'Получить расписание на сегодня' == mess.text, content_types=['text'])
 def handle_text(message):
-	cartoons = Timetable(database_url).get_cartoons(datetime.date(2017, 10, 28))
+	cartoons = Timetable(database_url).get_cartoons(datetime.date.today())
 	cartoons = [cartoons[key] for key in sorted(cartoons.keys())]
 	bot.send_message(message.chat.id, display_schedule(cartoons))
 
