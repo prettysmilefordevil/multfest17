@@ -29,7 +29,7 @@ def handle_text(message):
 
 @bot.message_handler(func=lambda mess: 'Получить расписание на сегодня' == mess.text, content_types=['text'])
 def handle_text(message):
-	cartoons = Timetable(database_url).get_cartoons(datetime.date(2017, 10, 26))
+	cartoons = Timetable(database_url).get_cartoons(datetime.date(2017, 10, 28))
 	cartoons = [cartoons[key] for key in sorted(cartoons.keys())]
 	bot.send_message(message.chat.id, display_schedule(cartoons))
 
