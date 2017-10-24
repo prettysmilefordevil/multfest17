@@ -9,7 +9,7 @@ import telebot
 import os
 
 
-server = Flask(__name__)
+#server = Flask(__name__)
 
 bot = telebot.TeleBot(token)
 #keyboard = Keyboard(bot)
@@ -31,7 +31,7 @@ def handle_text(message):
 def handle_text(message):
 	cartoons = Timetable(database_url).get_cartoons(datetime.date(2017, 10, 26))
 	cartoons = [cartoons[key] for key in sorted(cartoons.keys())]
-	bot.send_message(message.chat.id, display_schedule(cartoons))
+	bot.send_message(message.chat.id, display_schedule(cartoons), 'HTML')
 
 
 @server.route('/' + token, methods=['POST'])
@@ -46,6 +46,8 @@ def web_hook():
 	bot.set_webhook(url='https://lit-reaches-12820.herokuapp.com/' + token)
 	return "CONNECTED", 200
 
-
 if __name__ == '__main__':
-	 server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))
+	server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))
+	#cartoons = Timetable(database_url).get_cartoons(datetime.date(2017, 10, 26))
+	#cartoons = [cartoons[key] for key in sorted(cartoons.keys())]
+	#print(display_schedule(cartoons))

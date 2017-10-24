@@ -4,8 +4,12 @@ def display_schedule(cartoons):
 
 	result = ''
 	for cartoon in cartoons:
-		output = '{0} <a href="{1}">{2}</a> ({3}) \n {4} \n\n'.format(cartoon['c_time'], cartoon['c_url'],
-														cartoon['c_title'], cartoon['c_age'],cartoon['c_place'])
+		if cartoon['c_time'].minute==0:
+			output = '{0}:0{1} <a href="{2}">{3}</a> ({4}) \n {5} \n\n'.format(cartoon['c_time'].hour,cartoon['c_time'].minute, cartoon['c_url'],
+														cartoon['c_name'], cartoon['c_age'],cartoon['c_place'])
+		else:
+			output = '{0}:{1} <a href="{2}">{3}</a> ({4}) \n {5} \n\n'.format(cartoon['c_time'].hour,cartoon['c_time'].minute, cartoon['c_url'],
+														cartoon['c_name'], cartoon['c_age'],cartoon['c_place'])
 		result += output
 
 	return result

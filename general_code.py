@@ -28,7 +28,7 @@ class Timetable:
 
 	def get_cartoons(self, cartoon_date):
 		self.cursor.execute("SELECT * FROM schedule WHERE c_date=%s",
-							(cartoon_date))
+							[cartoon_date])
 
 		cartoon, cartoons = {}, {}
 
@@ -42,5 +42,5 @@ class Timetable:
 
 			cartoons[cartoon['c_id']] = cartoon
 			cartoon = {}
-
+		print (cartoons)
 		return cartoons
