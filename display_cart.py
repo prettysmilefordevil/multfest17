@@ -11,14 +11,17 @@ def display_schedule(cartoons):
 		mon='ноября'
 	for cartoon in cartoons:
 		if cartoon['c_time'].minute==0:
-			output = today.strftime("%d")+mon+'\n{0}:0{1}  {2} ({3}) \n {4} \n\n'.format(cartoon['c_time'].hour,cartoon['c_time'].minute,
+			output ='{0}:0{1}  {2} ({3}) \n {4} \n'.format(cartoon['c_time'].hour,cartoon['c_time'].minute,
 														cartoon['c_name'], cartoon['c_age'],cartoon['c_place'])
 			if not cartoon['c_url']=='':
 				output=output+'('+cartoon['c_url']+')'
 
 		else:
-			output = '{0}:{1} <a href="{2}">{3}</a> ({4}) \n {5} \n\n'.format(cartoon['c_time'].hour,cartoon['c_time'].minute, cartoon['c_url'],
+			output = '{0}:{1} {2} ({3}) \n {4} \n'.format(cartoon['c_time'].hour,cartoon['c_time'].minute,
 														cartoon['c_name'], cartoon['c_age'],cartoon['c_place'])
+			if not cartoon['c_url']=='':
+				output=output+'('+cartoon['c_url']+')'
 		result += output
+	result = today.strftime("%d")+' '+mon+'\n'+result
 
 	return result
