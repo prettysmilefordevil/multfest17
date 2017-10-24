@@ -1,9 +1,10 @@
+import datetime
 def display_schedule(cartoons):
 	if len(cartoons) == 0:
 		return 'На сегодня ничего нет :('
 
 	result = ''
-	today = datetime.now()
+	today = datetime.datetime.now()
 	if today.month==10:
 		mon='октября'
 	else:
