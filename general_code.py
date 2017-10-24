@@ -25,3 +25,22 @@ class Timetable:
 	def __init__(self, database_url):
 		connection_exists = ConnectionExits(database_url)
 		self.connection, self.cursor = connection_exists
+
+	def get_cartoons(self, cartoon_date):
+        self.cursor.execute("SELECT * FROM schedule WHERE c_date=%s",
+                            (cartoon_date))
+
+        cartoon, cartoons = {}, {}
+
+        for column in self.cursor:
+        	cartoon['c_id'] = column[0]
+        	cartoon['c_time'] = column[2]
+            cartoon['c_name'] = column[3]
+            cartoon['c_age'] = column[4]
+            cartoon['c_place'] = column[5]
+            cartoon['c_url'] = column[6]
+
+            cartoons[cartoon['c_id']] = cartoon
+            cartoon = {}
+
+        return cartoons

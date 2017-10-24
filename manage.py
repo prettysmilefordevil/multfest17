@@ -21,6 +21,19 @@ def handle_text(message):
     user_markup.row('Обратная связь')
     bot.send_message(message.from_user.id, 'Выберите пункт меню:', reply_markup=user_markup)
 
+
+@bot.message_handler(func=lambda mess: "Обратная связь" == mess.text, content_types=['text'])
+def handle_text(message):
+    bot.send_message(message.chat.id, 'По вопросам и предложениям:\n \n')
+
+
+@bot.message_handler(func=lambda mess: 'Получить расписание на сегодня' == mess.text, content_types=['text'])
+def handle_text(message):
+	cartoons = Timetable(database_url).get_cartoons(datetime.date(2017, 10, 26))
+    cartoons = [cartoons[key] for key in sorted(cartoons.keys())]
+    bot.send_message(message.chat.id, display_schedule(cartoons))
+
+
 @server.route('/' + token, methods=['POST'])
 def get_message():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
