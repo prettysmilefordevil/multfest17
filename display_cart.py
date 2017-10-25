@@ -5,6 +5,8 @@ def display_schedule(cartoons):
 
 	result = ''
 	today = datetime.datetime.now()
+	if datetime.date.today()==datetime.date(2017,10,25):
+		return 'Далеко на север (6+), Франция \n\n В прокате с 26 октября, не пропустите!\n\n https://karofilm.ru/film/2758'
 	if today.month==10:
 		mon='октября'
 	else:

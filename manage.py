@@ -24,7 +24,7 @@ def handle_text(message):
 
 @bot.message_handler(func=lambda mess: "Обратная связь" == mess.text, content_types=['text'])
 def handle_text(message):
-	bot.send_message(message.chat.id, 'По вопросам и предложениям: multfest.ru\n multfest@gmail.com\n')
+	bot.send_message(message.chat.id, 'По вопросам и предложениям: \nБелкова Екатерина\nhttps://t.me/BelkovaKatarzyna\n')
 
 
 @bot.message_handler(func=lambda mess: 'Получить расписание на сегодня' == mess.text, content_types=['text'])
