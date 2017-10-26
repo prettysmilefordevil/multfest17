@@ -19,7 +19,7 @@ def handle_text(message):
 	user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
 	user_markup.row('Получить расписание на сегодня')
 	user_markup.row('Обратная связь')
-	bot.send_message(message.from_user.id, 'Выберите пункт меню:', reply_markup=user_markup)
+	bot.send_message(message.from_user.id, 'Привет! Я бот Большого фестиваля мультфильмов :) \n У меня вы можете узнать расписание на сегодня!\n\nПодписывайтесь на наш канал в Telegram @multfest', reply_markup=user_markup)
 
 
 @bot.message_handler(func=lambda mess: "Обратная связь" == mess.text, content_types=['text'])
